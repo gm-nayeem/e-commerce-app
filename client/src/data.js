@@ -1,21 +1,23 @@
 export const sliderItems = [
     {
         id: 1,
-        img: "images/slider-1.jpeg",
+        img: "images/s-2.webp",
         title: "SUMMER SALE",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-        bg: "f5fafd",
+        // bg: "f5fafd",
+        bg: "#FEFEFE",
+        // bg: "FBB1A8",
     },
     {
         id: 2,
-        img: "../images/slider-2.jpeg",
+        img: "https://i.ibb.co/DG69bQ4/2.png",
         title: "AUTUMN COLLECTION",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
         bg: "fcf1ed",
     },
     {
         id: 3,
-        img: "images/slider-3.jpeg",
+        img: "https://i.ibb.co/cXFnLLV/3.png",
         title: "LOUNGEWEAR LOVE",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
         bg: "fbf0f4",
@@ -47,7 +49,7 @@ export const popularProducts = [
     },
     {
         id: 2,
-        img: "https://cdn.shopify.com/s/files/1/0101/4832/products/Angela_Natural_Tee.png?v=1606780388",
+        img: "../images/p-2.png",
     },
     {
         id: 3,
@@ -55,7 +57,7 @@ export const popularProducts = [
     },
     {
         id: 4,
-        img: "https://www.burdastyle.com/pub/media/catalog/product/cache/7bd3727382ce0a860b68816435d76e26/107/BUS-PAT-BURTE-1320516/1170x1470_BS_2016_05_132_front.png",
+        img: "../images/p-4.png"
     },
     {
         id: 5,
@@ -67,7 +69,7 @@ export const popularProducts = [
     },
     {
         id: 7,
-        img: "https://www.vintageindustries.nl/download_front/qympzk1762/2217_Arrow_Jacket_Forest.png",
+        img: "../images/p-7.png",
     },
     {
         id: 8,
