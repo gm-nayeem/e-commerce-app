@@ -65,7 +65,7 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>LAMA.</Logo>
+          <Logo>MERN.</Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
