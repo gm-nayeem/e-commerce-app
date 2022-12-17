@@ -41,6 +41,10 @@ const SocialIcon = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Center = styled.div`
@@ -78,6 +82,10 @@ const ContactItem = styled.div`
 
 const Payment = styled.img`
   width: 50%;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Footer = () => {
