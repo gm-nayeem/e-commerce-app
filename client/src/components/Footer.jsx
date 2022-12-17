@@ -7,9 +7,8 @@ import {
   Pinterest,
   Phone,
   Room,
-  MailOutline
-} from '@mui/icons-material/';
-
+  MailOutline,
+} from "@mui/icons-material/";
 
 const Container = styled.div`
   display: flex;
@@ -78,9 +77,8 @@ const ContactItem = styled.div`
 `;
 
 const Payment = styled.img`
-    width: 50%;
+  width: 50%;
 `;
-
 
 const Footer = () => {
   return (
@@ -125,7 +123,8 @@ const Footer = () => {
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <Room style={{ marginRight: "10px" }} /> 622 Dixie Path , South Tobinchester 98336
+          <Room style={{ marginRight: "10px" }} /> 622 Dixie Path , South
+          Tobinchester 98336
         </ContactItem>
         <ContactItem>
           <Phone style={{ marginRight: "10px" }} /> +1 234 56 78
@@ -136,7 +135,7 @@ const Footer = () => {
         <Payment src="../images/payment.png" />
       </Right>
     </Container>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

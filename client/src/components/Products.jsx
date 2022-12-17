@@ -1,5 +1,8 @@
+// external import
 import styled from "styled-components";
-import { popularProducts } from '../data'
+
+// internal import
+import { popularProducts } from "../data";
 import Product from "./Product";
 
 const Container = styled.div`
@@ -12,13 +15,11 @@ const Container = styled.div`
 const Products = () => {
   return (
     <Container>
-      {
-        popularProducts.map(item => (
-          <Product item={item} key={item.id} />
-        ))
-      }
+      {popularProducts.map((item) => (
+        <Product item={item} key={item.id} />
+      ))}
     </Container>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

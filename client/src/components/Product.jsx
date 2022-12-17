@@ -1,8 +1,10 @@
+// external import
 import styled from "styled-components";
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-
+import {
+  SearchOutlined,
+  ShoppingCartOutlined,
+  FavoriteBorderOutlined,
+} from "@mui/icons-material";
 
 const Info = styled.div`
   opacity: 0;
@@ -30,7 +32,7 @@ const Container = styled.div`
   justify-content: center;
   background-color: #f5fbfd;
   position: relative;
-  &:hover ${Info}{
+  &:hover ${Info} {
     opacity: 1;
   }
 `;
@@ -64,25 +66,24 @@ const Icon = styled.div`
   }
 `;
 
-
-const Product = ({item}) => {
+const Product = ({ item }) => {
   return (
     <Container>
       <Circle />
-      <Image src={item.img}/>
+      <Image src={item.img} />
       <Info>
         <Icon>
-          <ShoppingCartOutlinedIcon />
+          <ShoppingCartOutlined />
         </Icon>
         <Icon>
-          <SearchOutlinedIcon />
+          <SearchOutlined />
         </Icon>
         <Icon>
-          <FavoriteBorderOutlinedIcon />
+          <FavoriteBorderOutlined />
         </Icon>
       </Info>
     </Container>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;

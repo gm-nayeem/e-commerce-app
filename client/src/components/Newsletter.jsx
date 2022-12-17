@@ -1,5 +1,6 @@
+// external import
 import styled from "styled-components";
-import SendIcon from '@mui/icons-material/Send';
+import { Send } from "@mui/icons-material";
 
 const Container = styled.div`
   height: 60vh;
@@ -43,18 +44,18 @@ const Button = styled.button`
 `;
 
 const Newsletter = () => {
-    return (
-        <Container>
-            <Title>Newsletter</Title>
-            <Desc>Get timely updates from your favorite products.</Desc>
-            <InputContainer>
-                <Input placeholder="Your email" />
-                <Button>
-                    <SendIcon />
-                </Button>
-            </InputContainer>
-        </Container>
-    )
+  return (
+    <Container>
+      <Title>Newsletter</Title>
+      <Desc>Get timely updates from your favorite products.</Desc>
+      <InputContainer>
+        <Input placeholder="Your email" />
+        <Button>
+          <Send />
+        </Button>
+      </InputContainer>
+    </Container>
+  );
 };
 
 export default Newsletter;
