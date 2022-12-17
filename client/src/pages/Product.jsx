@@ -1,13 +1,12 @@
 // external import
 import styled from "styled-components";
-import {Add, Remove} from '@mui/icons-material';
+import { Add, Remove } from "@mui/icons-material";
 
 // internal import
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
-
 
 const Container = styled.div``;
 
@@ -107,11 +106,10 @@ const Button = styled.button`
   background-color: white;
   cursor: pointer;
   font-weight: 500;
-  &:hover{
-      background-color: #f8f4f4;
+  &:hover {
+    background-color: #f8f4f4;
   }
 `;
-
 
 const Product = () => {
   return (
@@ -120,7 +118,7 @@ const Product = () => {
       <Announcement />
       <Wrapper>
         <ImgContainer>
-          <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+          <Image src="../images/sp-1.jpeg" />
         </ImgContainer>
         <InfoContainer>
           <Title>Denim Jumpsuit</Title>
