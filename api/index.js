@@ -18,8 +18,9 @@ app.use(morgan('dev'))
 app.use(cors())
 
 // body-parser
+app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+// app.use(bodyParser.json())
 
 // routes
 app.use("/api/auth", authRoute)

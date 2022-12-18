@@ -1,5 +1,6 @@
 // external import
 const router = require("express").Router();
+const CryptoJS = require("crypto-js");
 
 // internal import
 const User = require("../models/User");
@@ -13,19 +14,19 @@ const {
 
 //UPDATE
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
-    const {password} = req.body
     const id = req.params.id;
 
-    let encrypted;
-
-    if (password) {
-        encrypted = CryptoJS.AES.encrypt(password, process.env.PASS_SEC).toString();
+    if (req.body.password) {
+        req.body.password = CryptoJS.AES.encrypt(
+            req.body.password, 
+            process.env.PASS_SEC
+        ).toString();
     }
 
     try {
         const updatedUser = await User.findByIdAndUpdate(id,
             {
-                $set: {password: encrypted}
+                $set: req.body
             },
             { new: true }
         );
