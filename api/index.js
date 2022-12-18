@@ -7,6 +7,8 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 // internal import 
+const authRoute = require('./routes/auth')
+const userRoute = require('./routes/user')
 
 
 const app = express()
@@ -20,7 +22,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // routes
-
+app.use("/api/auth", authRoute)
+app.use("/api/users", userRoute)
 
 
 app.get('/', (req, res) => {
