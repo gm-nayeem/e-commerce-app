@@ -9,7 +9,10 @@ const bodyParser = require('body-parser')
 // internal import 
 const authRoute = require('./routes/auth')
 const userRoute = require('./routes/user')
-
+const productRoute = require('./routes/product')
+const orderRoute = require('./routes/order')
+const cartRoute = require('./routes/cart')
+//const stripeRoute = require('./routes/stripe')
 
 const app = express()
 
@@ -25,6 +28,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // routes
 app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
+app.use("/api/products", productRoute)
+app.use("/api/orders", orderRoute)
+app.use("/api/carts", cartRoute)
+// app.use("/api/checkout", stripeRoute)
 
 
 app.get('/', (req, res) => {
