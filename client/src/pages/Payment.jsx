@@ -29,7 +29,7 @@ const Payment = () => {
             }
         };
         stripeToken && makeRequest();
-    }, [stripeToken])
+    }, [stripeToken, navigate])
 
   return (
     <div

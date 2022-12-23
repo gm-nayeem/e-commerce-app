@@ -51,7 +51,6 @@
 
 
 
-import { padding } from '@mui/system'
 import React from 'react'
 
 const Success = () => {
@@ -66,7 +65,6 @@ const Success = () => {
       }}
     >
       <button style={{ 
-            padding: 10, 
             margin: "20px 0", 
             backgroundColor: "green",
             color: "white",
