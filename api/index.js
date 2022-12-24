@@ -27,9 +27,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // app.use(bodyParser.json())
 
 // database
-mongoose.connect('mongodb://localhost/E_Commerce_Application')
-.then(() => console.log("mongose connection successful"))
-.catch(err => console.log(err));
+// mongoose.connect('mongodb://localhost/E_Commerce_Application')
+// .then(() => console.log("mongose connection successful"))
+// .catch(err => console.log(err));
 
 
 // routes
@@ -51,20 +51,20 @@ app.get('/', (req, res) => {
 
 // port and database connection
 const PORT = process.env.PORT || 4000
-app.listen(PORT, () => {
-    console.log(`Server in running at http://localhost:${PORT}`);
-})
-
-
 
 // app.listen(PORT, () => {
 //     console.log(`Server in running at http://localhost:${PORT}`);
-//     mongoose.connect(
-//         process.env.MONGO_URL,
-//         { useNewUrlParser: true },
-//         () => {
-//             console.log('Database Connected Successfully...');
-//         }
-//     );
 // })
+
+
+app.listen(PORT, () => {
+    console.log(`Server in running at http://localhost:${PORT}`);
+    mongoose.connect(
+        process.env.MONGO_URL,
+        { useNewUrlParser: true },
+        () => {
+            console.log('Database Connected Successfully...');
+        }
+    );
+})
 
