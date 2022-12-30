@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
-const checkSchema = new mongoose.Schema(
+const testSchema = mongoose.Schema(
   {
     username: { type: String, required: true },
     userId: { type: String, required: true }
   }
 );
 
-module.exports = mongoose.model("Check", checkSchema);
+module.exports = mongoose.model("Test", testSchema);

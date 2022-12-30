@@ -13,7 +13,7 @@ const productRoute = require('./routes/product')
 const orderRoute = require('./routes/order')
 const cartRoute = require('./routes/cart')
 const paymentRoute = require('./routes/stripe')
-const testRoute = require('./routes/test')
+// const testRoute = require('./routes/test')
 
 const app = express()
 
@@ -39,7 +39,7 @@ app.use("/api/products", productRoute)
 app.use("/api/orders", orderRoute)
 app.use("/api/carts", cartRoute)
 app.use("/api/checkout", paymentRoute)
-app.use("/api/test", testRoute)
+// app.use("/api/tests", testRoute)
 
 
 app.get('/', (req, res) => {

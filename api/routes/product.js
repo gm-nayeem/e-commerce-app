@@ -60,8 +60,12 @@ router.get("/find/:id", async (req, res) => {
 
 //GET ALL PRODUCTS
 router.get("/", async (req, res) => {
+
     const qNew = req.query.new;
     const qCategory = req.query.category;
+
+    // console.log(qCategory);
+
     try {
         let products;
 
@@ -75,8 +79,7 @@ router.get("/", async (req, res) => {
             });
         } else {
             products = await Product.find();
-        }
-        
+        }       
         res.status(200).json(products);
     } catch (err) {
         res.status(500).json(err);
