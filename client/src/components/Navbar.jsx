@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Badge } from "@mui/material";
 import { ShoppingCartOutlined, SearchOutlined } from "@mui/icons-material";
 import {useSelector} from 'react-redux';
+import { Link } from "react-router-dom";
 
 // internal import 
 import {mobile} from '../responsive'
@@ -87,11 +88,13 @@ const Navbar = () => {
         <Right>
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGNIN</MenuItem>
-          <MenuItem>
-            <Badge badgeContent={quantity} color="primary">
-              <ShoppingCartOutlined />
-            </Badge>
-          </MenuItem>
+          <Link to={"/cart"}>
+            <MenuItem>
+              <Badge badgeContent={quantity} color="primary">
+                <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>

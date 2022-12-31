@@ -1,8 +1,10 @@
+// external import
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-
 import { Provider } from 'react-redux';
+
+// internal import
+import App from './App';
 import store from './redux/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
