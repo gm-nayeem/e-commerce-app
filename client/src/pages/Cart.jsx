@@ -1,13 +1,22 @@
 // external import
 import styled from "styled-components";
 import { Add, Remove } from "@mui/icons-material";
+import { useSelector } from "react-redux";
+import StripeCheckout from 'react-stripe-checkout';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // internal import
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
-import { useSelector } from "react-redux";
+import {userRequest} from "../requestMethod"
+
+
+
+const STRIPE_PUBLIC_KEY = "pk_test_51MH7y7DI8Wx9xPI54KyMHdXEQviHF04P41ye1wdA3kLxeGWk4sM7iFjzVKlULvyC5po81gkvBWVFxmVBfaEBBL740008dj7c13";
+
 
 const Container = styled.div``;
 
@@ -159,7 +168,33 @@ const Button = styled.button`
 
 const Cart = () => {
   const cart = useSelector(state => state.cart);
-  console.log(cart);
+  const [stripeToken, setStripeToken] = useState(null);
+
+  const navigate = useNavigate();
+  
+  const onToken = (token) => {
+    setStripeToken(token);
+  }
+
+  useEffect(()=> {
+    const makeRequest = async () => {
+      try{
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: cart.totalPrice*100,
+        });
+        // console.log(res.data);
+        navigate('/success', {
+          state: {
+            myData: res.data,
+          },
+        });
+      } catch(err) {
+        console.log(err.message);
+      }
+    }
+    stripeToken && makeRequest();
+  }, [stripeToken, cart.totalPrice, navigate]);
 
   return (
     <Container>
@@ -179,7 +214,7 @@ const Cart = () => {
           <Info>
             {
               cart.products.map(product => (
-                <Product>
+                <Product key={product._id}>
                   <ProductDetail>
                     <Image src={product.img} />
                     <Details>
@@ -226,7 +261,18 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ {cart.totalPrice}</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <StripeCheckout
+              name='Mern Shop'
+              image='https://avatars.githubusercontent.com/u/1486366?v=4'
+              buildingAddress
+              shippingAddress
+              description='Your total is $20'
+              amount={cart.totalPrice*100}
+              token={onToken}
+              stripeKey={STRIPE_PUBLIC_KEY}
+            >
+             <Button>CHECKOUT NOW</Button> 
+            </StripeCheckout>
           </Summary>
         </Bottom>
       </Wrapper>
@@ -236,3 +282,7 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
+
+// 4242 4242 4242 4242

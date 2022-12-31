@@ -50,10 +50,15 @@
 // export default Success;
 
 
-
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 
 const Success = () => {
+  const location = useLocation()
+  const data = location.state.myData;
+  console.log(location);
+  console.log(data);
+
   return (
     <div
       style={{
