@@ -10,13 +10,16 @@ import Success from './pages/Success';
 import Error from './pages/Error';
 
 // external import
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 
 function App() {
-  const user = false;
+  const loginUser = useSelector(state => state.user.loginUser);
+  const registerUser = useSelector(state => state.user.registerUser);
   
   return (
+
     <BrowserRouter>
 
       <Routes>
@@ -29,13 +32,13 @@ function App() {
         <Route path='/cart' element={<Cart />} />
         <Route 
           path='/register' 
-          element={user ? <Home /> : <Register />} 
+          element={registerUser ? <Navigate to="/login" replace /> : <Register />} 
         />
         <Route 
           path='/login' 
-          element={user ? <Home /> : <Login />} 
+          element={loginUser ? <Navigate to="/" replace /> : <Login />} 
         />
-        <Route path='*' element={<Error />} />
+        <Route path="*" element={<Error />} />
 
       </Routes>
 

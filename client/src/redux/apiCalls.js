@@ -18,7 +18,7 @@ export const register = async (dispatch, user) => {
 
 // login
 export const login = async (dispatch, user) => {
-    //console.log(user);
+    // console.log(user);
     dispatch(loginStart());
     try{
         const res = await publicRequest.post("/auth/login", user);       

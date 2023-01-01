@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { login } from "../redux/apiCalls";
 
 const Container = styled.div`
@@ -52,6 +52,10 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
   margin-bottom: 10px;
+  &:disabled{
+    color: green;
+    cursor: not-allowed;
+  }
 `;
 
 const Link = styled.a`
@@ -62,11 +66,16 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
+const Error = styled.span`
+  color: red;
+`
+
 const Login = () => {
   const [user, setUser] = useState({username: "", password: ""})
   const {username, password} = user;
 
   const dispatch = useDispatch();
+  const {isFetching, isError} = useSelector(state => state.user);
 
   const userHandler = (e) => {
     setUser(
@@ -76,9 +85,9 @@ const Login = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    // console.log(user);
+    // console.log(username, password);
 
-    login(dispatch, user);
+    login(dispatch, {username, password});
 
     setUser({
       username: "",
@@ -92,13 +101,16 @@ const Login = () => {
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input placeholder="username" value={username} name="username"
-            onChange={userHandler} required       
+          <Input placeholder="username" value={username} name="username" 
+            required onChange={userHandler}        
           />
           <Input placeholder="password" type="password" name="password" value={password} 
-            onChange={userHandler} required
+            required onChange={userHandler} 
           />
-          <Button onClick={handleClick}>LOGIN</Button>
+          <Button onClick={handleClick} disabled={isFetching}>LOGIN</Button>
+          {
+            isError && <Error>Something went wrong...</Error>
+          }
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
         </Form>
