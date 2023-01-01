@@ -9,7 +9,7 @@ router.post("/register", async (req, res) => {
         username,
         email,
         password
-    } = req.body
+    } = req.body;
 
     const encrypted = CryptoJS.AES.encrypt(password, process.env.PASS_SEC).toString();
 
@@ -21,6 +21,7 @@ router.post("/register", async (req, res) => {
 
     try {
         const savedUser = await newUser.save();
+        // console.log(savedUser);
         res.status(201).json(savedUser);
     } catch (err) {
         res.status(500).json(err);
@@ -29,10 +30,13 @@ router.post("/register", async (req, res) => {
 
 //LOGIN
 router.post('/login', async (req, res) => {
+
     const {
         username,
         password
     } = req.body
+
+    // console.log(username, password);
 
     try {
         const user = await User.findOne({username});

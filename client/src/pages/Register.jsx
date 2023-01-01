@@ -1,6 +1,10 @@
 // external import
+import { useState } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import {useDispatch} from 'react-redux'
+import { register } from "../redux/apiCalls";
+
 
 const Container = styled.div`
   width: 100vw;
@@ -56,22 +60,66 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  const [user, setUser] = useState({
+    fname: "", lname: "", username: "", 
+    email: "", password: "", confirmPassword: ""
+  });
+  const {fname, lname, username, email, password, confirmPassword} = user;
+
+  const dispatch = useDispatch();
+
+  const userHandler = (e) => {
+    setUser(
+      {...user, [e.target.name]: e.target.value}
+    );
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    // console.log(user);
+
+    register(dispatch, {username, email, password});
+
+    setUser({
+      fname: "", 
+      lname: "",
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: ""
+    });
+  }
+
+
+
   return (
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
-          <Input placeholder="first name" />
-          <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
-          <Input placeholder="confirm password" />
+          <Input placeholder="first name" name="fname" value={fname}
+            onChange={userHandler}
+          />
+          <Input placeholder="last name" name="lname" value={lname}
+            onChange={userHandler}
+          />
+          <Input placeholder="username" name="username" value={username}
+            onChange={userHandler} required
+          />
+          <Input placeholder="email" name="email" value={email}
+            onChange={userHandler} required
+          />
+          <Input placeholder="password" type="password" name="password" 
+            value={password} onChange={userHandler}
+          />
+          <Input placeholder="confirm password" type="password" name="confirmPassword"
+            value={confirmPassword} onChange={userHandler} required
+          />
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
+          <Button onClick={handleClick}>CREATE</Button>
         </Form>
       </Wrapper>
     </Container>
