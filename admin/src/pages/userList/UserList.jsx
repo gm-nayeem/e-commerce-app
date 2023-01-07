@@ -9,7 +9,7 @@ const UserList = () => {
   const [data, setData] = useState(userRows)
   const handleDelete = (id)=> {
     setData(
-      data.filter(item => item.id != id)
+      data.filter(item => item.id !== id)
     )
   }
 
@@ -22,7 +22,7 @@ const UserList = () => {
       renderCell: (params)=> {
         return (
           <div className='userListUser'>
-            <img className='userListImg' src={params.row.avatar} alt="Image" />
+            <img className='userListImg' src={params.row.avatar} alt="" />
             {params.row.username}
           </div>
         )
