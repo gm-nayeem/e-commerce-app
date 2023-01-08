@@ -18,9 +18,8 @@ import { useSelector } from 'react-redux'
 
 const App = () => {
   const admin = useSelector((state) => state.admin.currentUser.user.isAdmin);
-  // console.log(admin)
-
   const currentUser = useSelector(state => state.admin.currentUser);
+  // console.log(admin)
 
   return (
 
