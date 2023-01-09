@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "server": "nodemon index.js",
-    "client": "npm start --prefix ../client",
-    "admin": "npm start --prefix ../admin",
-    "dev": "concurrently \"npm run server\" \"npm run admin\""
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -27,3 +23,5 @@
     "stripe": "^11.4.0"
   }
 }
+
+
