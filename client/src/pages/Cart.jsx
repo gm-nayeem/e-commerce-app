@@ -11,7 +11,7 @@ import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
-import {userRequest} from "../requestMethod"
+import { userRequest } from "../requestMethod"
 
 
 
@@ -166,35 +166,37 @@ const Button = styled.button`
   font-weight: 600;
 `;
 
+
 const Cart = () => {
   const cart = useSelector(state => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
-
   const navigate = useNavigate();
-  
+
   const onToken = (token) => {
     setStripeToken(token);
   }
 
-  useEffect(()=> {
+  useEffect(() => {
     const makeRequest = async () => {
-      try{
+      try {
         const res = await userRequest.post("/checkout/payment", {
           tokenId: stripeToken.id,
-          amount: cart.totalPrice*100,
+          amount: cart.totalPrice * 100,
         });
-        // console.log(res.data);
+        //console.log(res.data);
+              
         navigate('/success', {
           state: {
-            myData: res.data,
+            stripeData: res.data,
+            products: cart
           },
         });
-      } catch(err) {
+      } catch (err) {
         console.log(err.message);
       }
     }
     stripeToken && makeRequest();
-  }, [stripeToken, cart.totalPrice, navigate]);
+  }, [stripeToken, cart, cart.totalPrice, navigate]);
 
   return (
     <Container>
@@ -267,11 +269,11 @@ const Cart = () => {
               buildingAddress
               shippingAddress
               description='Your total is $20'
-              amount={cart.totalPrice*100}
+              amount={cart.totalPrice * 100}
               token={onToken}
               stripeKey={STRIPE_PUBLIC_KEY}
             >
-             <Button>CHECKOUT NOW</Button> 
+              <Button>CHECKOUT NOW</Button>
             </StripeCheckout>
           </Summary>
         </Bottom>

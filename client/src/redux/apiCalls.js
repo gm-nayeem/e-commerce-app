@@ -28,13 +28,13 @@ export const login = async (dispatch, user) => {
     }
 }
 
-// add cart
-// export const addProduct = async (product, dispatch) => {
-//     dispatch(addProductStart());
+// add order
+// export const addOrder = async (order, dispatch) => {
+//     dispatch(addOrderStart());
 //     try {
-//       const res = await userRequest.post(`/products`, product);
-//       dispatch(addProductSuccess(res.data));
+//       const res = await userRequest.post(`/orders`, order);
+//       dispatch(addOrderSuccess(res.data));
 //     } catch (err) {
-//       dispatch(addProductFailure());
+//       dispatch(addOrderFailure());
 //     }
 // };
