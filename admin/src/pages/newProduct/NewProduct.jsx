@@ -61,8 +61,9 @@ const NewProduct = () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const product = {...inputs, img: downloadURL, categories}
+          // console.log(product)
           addProduct(dispatch, product);
-          navigate("/products");
+          // navigate("/products");
         });
       }
     );

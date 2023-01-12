@@ -60,8 +60,8 @@ const productSlice = createSlice({
             state.isError = false;
         },
         addProductSuccessful: (state, action) => {
-            state.isFetching = false;           
-            state.products.push(action.payload);
+            state.isFetching = false;        
+            state.products.push(action.payload.savedProduct);
         },
         addProductFailure: (state) => {
             state.isFetching = false;
@@ -82,6 +82,7 @@ export const {
     updateProductSuccessful,
     addProductFailure,
     addProductStart,
-    addProductSuccessful
+    addProductSuccessful,
+    testProduct
 } = productSlice.actions;
 export default productSlice.reducer;

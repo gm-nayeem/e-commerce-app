@@ -19,7 +19,7 @@ import {
     updateProductSuccessful,
     addProductFailure,
     addProductStart,
-    addProductSuccessful,
+    addProductSuccessful
 
 } from './productRedux'
 
@@ -72,11 +72,10 @@ export const updateProduct = async (dispatch, id, product) => {
 
 // add product
 export const addProduct = async (dispatch, product) => {
-    console.log("Pro: " + product)
     dispatch(addProductStart());
     try{   
         const res = await userRequest.post("/products", product)
-        console.log(res.data)
+        console.log("res" + res.data);
         dispatch(addProductSuccessful(res.data));
     } catch(err) {
         dispatch(addProductFailure());
