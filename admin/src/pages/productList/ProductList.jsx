@@ -51,7 +51,8 @@ const ProductList = () => {
             <Link to={"/product/"+params.row._id}>
               <button className="productListEdit">Edit</button>
             </Link>
-            <DeleteOutline className="productListDelete" onClick={() => handleDelete(params.row._id)} />
+            <DeleteOutline className="productListDelete" 
+              onClick={() => handleDelete(params.row._id)} />
           </>         
         )
       }

@@ -14,7 +14,7 @@ const FeaturedInfo = () => {
                 const res = await userRequest.get("/orders/income");
                 // console.log(res.data);
                 setIncome(res.data);
-                //setPerc( (res.data[1].total*100) / res.data[0].total - 100 );
+                setPerc( (res.data[1].total*100) / res.data[0].total - 100 );
             } catch(err) {
                 console.log(err.message)
             }
@@ -29,7 +29,7 @@ const FeaturedInfo = () => {
             <div className="featuredItem">
                 <span className="featuredTitle">Revanue</span>
                 <div className="featuredMoneyContainer">
-                    <span className="featuredMoney">${income[0]?.total}</span>
+                    <span className="featuredMoney">${income[1]?.total}</span>
                     <span className="featuredMoneyRate">
                         %{Math.floor(perc)} 
                         {
