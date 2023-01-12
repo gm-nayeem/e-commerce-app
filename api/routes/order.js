@@ -61,6 +61,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
 // //GET ALL
 
 router.get("/", verifyTokenAndAdmin, async (req, res) => {
+    // console.log("hi");
     try {
         const orders = await Order.find();
         res.status(200).json(orders);
@@ -71,6 +72,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
 
 // GET MONTHLY INCOME
 router.get("/income", verifyTokenAndAdmin, async (req, res) => {
+    console.log(req.query.pid);
     const productId = req.query.pid;
     const date = new Date();
     const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
@@ -99,6 +101,7 @@ router.get("/income", verifyTokenAndAdmin, async (req, res) => {
                 },
             },
         ]);
+        console.log("income" + income);
         res.status(200).json(income);
     } catch (err) {
         res.status(500).json(err);

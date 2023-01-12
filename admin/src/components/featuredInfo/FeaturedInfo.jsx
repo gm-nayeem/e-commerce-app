@@ -5,14 +5,16 @@ import { useEffect } from "react";
 import { userRequest } from "../../requestMethod";
 
 const FeaturedInfo = () => {
-    const [income, setIncome] = useState([])
+    const [income, setIncome] = useState([]);
+    const [perc, setPerc] = useState(0);
 
     useEffect(() => {
         const getIncome = async () => {
             try{
                 const res = await userRequest.get("/orders/income");
-                console.log(res.data);
+                // console.log(res.data);
                 setIncome(res.data);
+                //setPerc( (res.data[1].total*100) / res.data[0].total - 100 );
             } catch(err) {
                 console.log(err.message)
             }
@@ -20,16 +22,24 @@ const FeaturedInfo = () => {
         getIncome();
     }, []);
 
-    // console.log(income);
+    // console.log(income[1]?.total);
 
     return (
         <div className="featured">
             <div className="featuredItem">
                 <span className="featuredTitle">Revanue</span>
                 <div className="featuredMoneyContainer">
-                    <span className="featuredMoney">$2,415</span>
+                    <span className="featuredMoney">${income[0]?.total}</span>
                     <span className="featuredMoneyRate">
-                        -11.4 <ArrowDownward className="featuredIcon negative" />
+                        %{Math.floor(perc)} 
+                        {
+                            perc < 0 ? (
+                                <ArrowDownward className="featuredIcon negative" />
+                            ) : (
+                                <ArrowUpward className="featuredIcon" />
+                            )
+                        }
+                  
                     </span>
                 </div>
                 <span className="featuredSub">Compared to last month</span>

@@ -6,7 +6,6 @@ import WidgetLg from '../../components/widgetLg/WidgetLg'
 import { useState, useEffect, useMemo } from 'react'
 import { userRequest } from '../../requestMethod'
 
-
 const Home = () => {
   const [userStats, setUserStats] = useState([]);
 
