@@ -2,8 +2,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux';
 import { login } from "../redux/apiCalls";
+import { Link as LinkRouter } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -66,16 +67,16 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
-const Error = styled.span`
-  color: red;
-`
+// const Error = styled.span`
+//   color: red;
+// `
 
 const Login = () => {
   const [user, setUser] = useState({username: "", password: ""})
   const {username, password} = user;
 
   const dispatch = useDispatch();
-  const {isFetching, isError} = useSelector(state => state.user);
+  // const {isFetching, isError} = useSelector(state => state.user);
 
   const userHandler = (e) => {
     setUser(
@@ -107,12 +108,14 @@ const Login = () => {
           <Input placeholder="password" type="password" name="password" value={password} 
             required onChange={userHandler} 
           />
-          <Button onClick={handleClick} disabled={isFetching}>LOGIN</Button>
-          {
+          <Button onClick={handleClick} >LOGIN</Button>
+          {/* {
             isError && <Error>Something went wrong...</Error>
-          }
+          } */}
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          <LinkRouter to={"/register"} style={{textDecoration: "none"}}>
+            <Link>CREATE A NEW ACCOUNT</Link>
+          </LinkRouter>
         </Form>
       </Wrapper>
     </Container>

@@ -17,7 +17,7 @@ import { useSelector } from 'react-redux'
 
 
 const App = () => {
-  const admin = useSelector((state) => state.admin.currentUser.user.isAdmin);
+  const admin = useSelector((state) => state.admin.currentUser?.user.isAdmin);
   const currentUser = useSelector(state => state.admin.currentUser);
   // console.log(admin)
 
@@ -39,7 +39,7 @@ const App = () => {
             <div className="container">
               <Sidebar />
               <Routes>
-                <Route path='/' element={<Home />} />
+                <Route exact path='/' element={<Home />} />
                 <Route path='/users' element={<UserList />} />
                 <Route path='/user/:userId' element={<User />} />
                 <Route path='/newuser' element={<NewUser />} />

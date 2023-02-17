@@ -2,8 +2,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import {useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux';
 import { register } from "../redux/apiCalls";
+import { useNavigate } from "react-router-dom";
 
 
 const Container = styled.div`
@@ -60,12 +61,13 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+
   const [user, setUser] = useState({
     fname: "", lname: "", username: "", 
     email: "", password: "", confirmPassword: ""
   });
   const {fname, lname, username, email, password, confirmPassword} = user;
-
+  const navigate= useNavigate();
   const dispatch = useDispatch();
 
   const userHandler = (e) => {
@@ -79,15 +81,16 @@ const Register = () => {
     // console.log(user);
 
     register(dispatch, {username, email, password});
+    navigate("/login");
 
-    setUser({
-      fname: "", 
-      lname: "",
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
-    });
+    // setUser({
+    //   fname: "", 
+    //   lname: "",
+    //   username: "",
+    //   email: "",
+    //   password: "",
+    //   confirmPassword: ""
+    // });
   }
 
 

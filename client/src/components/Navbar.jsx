@@ -3,8 +3,9 @@ import React from "react";
 import styled from "styled-components";
 import { Badge } from "@mui/material";
 import { ShoppingCartOutlined, SearchOutlined } from "@mui/icons-material";
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import { Link } from "react-router-dom";
+import {logout} from "../redux/userRedux";
 
 // internal import 
 import {mobile} from '../responsive'
@@ -72,6 +73,8 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
   const quantity = useSelector(state => state.cart.quantity);
+  const loginUser = useSelector(state => state.user.loginUser);
+  const dispatch = useDispatch();
 
   return (
     <Container>
@@ -89,12 +92,17 @@ const Navbar = () => {
           </Link>
         </Center>
         <Right>
-          <Link to={"/register"} style={{textDecoration: "none"}}>
+          <Link to={"/register"} 
+            style= {{textDecoration: "none", display: loginUser && "none" }}
+          >
             <MenuItem>REGISTER</MenuItem>
           </Link>
-          <Link to={"/login"} style={{textDecoration: "none"}}>
+          <Link to={"/login"} 
+            style= {{textDecoration: "none", display: loginUser && "none" }}
+          >
             <MenuItem>SIGNIN</MenuItem>
           </Link>
+          <MenuItem onClick={() => dispatch(logout())}>LOGOUT</MenuItem>
           <Link to={"/cart"}>
             <MenuItem>
               <Badge badgeContent={quantity} color="primary">

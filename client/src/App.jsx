@@ -16,27 +16,35 @@ import { useSelector } from 'react-redux';
 
 function App() {
   const loginUser = useSelector(state => state.user.loginUser);
-  const registerUser = useSelector(state => state.user.registerUser);
-  
+  // const registerUser = useSelector(state => state.user.registerUser);
+
   return (
 
     <BrowserRouter>
 
       <Routes>
 
-        <Route path='/' element={<Home />} />
-        <Route path='/payment' element={<Payment />} />
-        <Route path='/success' element={<Success />} />
-        <Route path='/products/:category' element={<ProductList />} />
-        <Route path='/product/:id' element={<Product />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route 
-          path='/register' 
-          element={registerUser ? <Navigate to="/login" replace /> : <Register />} 
+        <Route exact path='/'
+          element={loginUser ? <Home /> : <Navigate to="/register" replace />}
         />
-        <Route 
-          path='/login' 
-          element={loginUser ? <Navigate to="/" replace /> : <Login />} 
+        {
+          loginUser && (
+            <>
+              <Route path='/payment' element={<Payment />} />
+              <Route path='/success' element={<Success />} />
+              <Route path='/products/:category' element={<ProductList />} />
+              <Route path='/product/:id' element={<Product />} />
+              <Route path='/cart' element={<Cart />} />
+            </>
+          )
+        }
+        <Route
+          path='/register'
+          element={loginUser ? <Navigate to="/" replace /> : <Register />}
+        />
+        <Route
+          path='/login'
+          element={loginUser ? <Navigate to="/" replace /> : <Login />}
         />
         <Route path="*" element={<Error />} />
 

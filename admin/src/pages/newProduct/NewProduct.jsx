@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./newProduct.css";
 import { addProduct } from "../redux/apiCalls";
 import {useDispatch} from 'react-redux';
-import {useNavigate} from 'react-router-dom'
+// import {useNavigate} from 'react-router-dom'
 
 import {
   getStorage,
@@ -17,7 +17,7 @@ const NewProduct = () => {
   const [file, setFile] = useState(null);
   const [categories, setCategories] = useState([]);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInputs(prev => {
