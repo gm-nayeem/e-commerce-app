@@ -1,7 +1,7 @@
 // external import
 import { useState } from "react";
 // import { mobile } from "../responsive";
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { login } from "../redux/apiCalls";
 import {Link} from 'react-router-dom';
 import "./login.css";
@@ -12,7 +12,7 @@ const Login = () => {
   const {username, password} = user;
 
   const dispatch = useDispatch();
-  const {isFetching, isError} = useSelector(state => state.admin);
+  // const {isFetching, isError} = useSelector(state => state.admin);
 
   const userHandler = (e) => {
     setUser(
@@ -22,7 +22,6 @@ const Login = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    //console.log(username, password);
 
     login(dispatch, {username, password});
 
@@ -44,12 +43,12 @@ const Login = () => {
           <input placeholder="password" type="password" name="password" value={password} 
             required onChange={userHandler} 
           />
-          <button className="loginButton" onClick={handleClick} disabled={isFetching}>
+          <button className="loginButton" onClick={handleClick}>
             LOGIN
           </button>
-          {
+          {/* {
             isError && <p className="loginFormError">Something went wrong...</p>
-          }
+          } */}
           <Link className="link">
             <p className="loginFormLink">DO NOT YOU REMEMBER THE PASSWORD?</p>
           </Link>

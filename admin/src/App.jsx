@@ -13,6 +13,7 @@ import NewProduct from './pages/newProduct/NewProduct'
 import Topbar from './components/topbar/Topbar'
 import Sidebar from './components/sidebar/Sidebar'
 import Login from './pages/login/Login'
+import Error from "./pages/error/Error"
 import { useSelector } from 'react-redux'
 
 
@@ -55,6 +56,13 @@ const App = () => {
           </Routes>
         )
       }
+
+      <Routes>
+        <Route
+          path='*'
+          element={admin ? <Error /> : <Navigate to="/login" replace />}
+        />
+      </Routes>
 
     </Router>
   )
